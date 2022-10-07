@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        contextPath: /nacos
+        server-addr: mse-16f4a4b0-p.nacos-ans.mse.aliyuncs.com:8848
