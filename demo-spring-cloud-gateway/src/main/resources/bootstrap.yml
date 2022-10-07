@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: demo-spring-cloud-gateway
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    gateway:
+      routes:
+        - id: lane
+          predicates:
+            - Path=/l/**
+          filters:
+            - RewritePath=/l/(?<segment>.*), /$\{segment}
+          uri: lb://demo1
+    nacos:
+      discovery:
+        namespace: public
+        server-addr: mse-16f4a4b0-p.nacos-ans.mse.aliyuncs.com:8848
+server:
+  port: 9080
+logging:
+  level:
+    "com.example.demogw.cloud.lb": trace
